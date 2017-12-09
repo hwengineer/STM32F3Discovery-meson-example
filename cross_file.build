@@ -1,0 +1,51 @@
+[binaries]
+#c       = 'llc'
+#cpp     = 'clang++'
+#ld      = 'llvm-link'
+#ar      = 'llvm-ar'
+#size    = 'llvm-size'
+#objdump = 'llvm-objdump'
+#objcopy = 'arm-none-eabi-objcopy'
+#strip   = 'arm-none-eabi-strip'
+#gdb     = 'arm-none-eabi-gdb'
+
+c       = 'arm-none-eabi-gcc'
+cpp     = 'arm-none-eabi-g++'
+ar      = 'arm-none-eabi-ar'
+ld      = 'arm-none-eabi-ld'
+strip   = 'arm-none-eabi-strip'
+objdump = 'arm-none-eabi-objdump'
+objcopy = 'arm-none-eabi-objcopy'
+size    = 'arm-none-eabi-size'
+gdb     = 'arm-none-eabi-gdb'
+
+
+
+[host_machine]
+system     = 'none'
+cpu_family = 'arm'
+cpu        = 'cortex-m4'
+endian     = 'little'
+
+# arm-none-eabi-g++ -mcpu=cortex-m4
+                  # -mthumb
+                  # -Og
+                  # -fmessage-length=0
+                  # -fsigned-char
+                  # -ffunction-sections
+                  # -fdata-sections
+                  # -ffreestanding
+                  # -fno-move-loop-invariants
+                  # -Wall
+                  # -Wextra
+                  # -g3
+                  # -T mem.ld
+                  # -T libs.ld
+                  # -T sections.ld
+                  # -nostartfiles
+                  # -Xlinker --gc-sections
+                  # -L"../ldscripts"
+                  # -Wl,-Map,"STM32F3Discovery_Blink.map"
+                  # --specs=nano.specs
+                  # -o "STM32F3Discovery_Blink.elf" $(
+                  # OBJS) $(USER_OBJS) $(LIBS)

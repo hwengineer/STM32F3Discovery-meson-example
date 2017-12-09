@@ -1,0 +1,3 @@
+[submodule "STM32Cube-f3-meson"]
+	path = STM32Cube-f3-meson
+	url = git@github.com:hwengineer/STM32Cube-f3-meson.git
