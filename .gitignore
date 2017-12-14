@@ -1,1 +1,3 @@
 build/
+llvmbuild/
+gccbuild/
