@@ -96,6 +96,7 @@ After updateing the udev rules use this command to reload the new configs
 go to your destination folder and clone the repo in
 
       git clone https://github.com/hwengineer/STM32F3Discovery-meson-example.git
+      cd STM32F3Discovery-meson-example
       git submodule update --init --recursive
 
 And no use the commands above for compilation and testing.
