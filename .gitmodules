@@ -1,9 +1,9 @@
 [submodule "STM32Cube-f3-meson"]
 	path = STM32Cube-f3-meson
-	url = git@github.com:hwengineer/STM32Cube-f3-meson.git
+	url = https://github.com/hwengineer/STM32Cube-f3-meson.git
 [submodule "STM32-startup"]
 	path = STM32-startup
-	url = git@github.com:hwengineer/STM32-startup.git
+	url = https://github.com/hwengineer/STM32-startup.git
 [submodule "STM32-ldscripts"]
 	path = STM32-ldscripts
-	url = git@github.com:hwengineer/STM32-ldscripts.git
+	url = https://github.com/hwengineer/STM32-ldscripts.git

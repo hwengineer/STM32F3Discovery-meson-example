@@ -41,14 +41,24 @@ c_args      = [
                '-ffreestanding',
                ]
 
-c_link_args = ['--target=arm-none-eabi', # define target for linker
+c_link_args = [
+               # '-rtlib=compiler-rt',
+               # '-rtlib=libgcc',
+               '--target=arm-none-eabi', # define target for linker
                '-Wl,-Map,output.map',    # create linker map file
                '-Wl,--as-needed',        # linker optimasation
                '-Wl,--gc-sections',      # needed for optimization
                '-flto',
 
+
+
+
                '-nostdlib',
               ]
+
+# doesnt work at the moment
+# newlib_nano = true
+newlib_nano = false
 
 [host_machine]
 system     = 'none'

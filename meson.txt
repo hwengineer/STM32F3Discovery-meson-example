@@ -1,3 +1,0 @@
-# Meson Option File for the STM32 Cortex Builds
-
-option('newlib_nano', type : 'boolean', value : false)
