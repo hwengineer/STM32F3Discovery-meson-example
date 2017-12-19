@@ -81,7 +81,7 @@ endif
 
 #==============================================================================#
 # add STM library
-subdir('STM32Cube-f3-meson')
+subdir('STM32Cube-F3-meson')
 
 #==============================================================================#
 # include newlib_nano : but without C++ features
