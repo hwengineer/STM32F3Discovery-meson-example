@@ -1,6 +1,6 @@
-[submodule "STM32Cube-f3-meson"]
-	path = STM32Cube-f3-meson
-	url = https://github.com/hwengineer/STM32Cube-f3-meson.git
+[submodule "STM32Cube-F3-meson"]
+	path = STM32Cube-F3-meson
+	url = https://github.com/hwengineer/STM32Cube-F3-meson.git
 [submodule "STM32-startup"]
 	path = STM32-startup
 	url = https://github.com/hwengineer/STM32-startup.git
