@@ -50,46 +50,7 @@ enjoy!
 
 ## Toolchain Installation
 
-Of course this only works, if the proper toolchain is installed...
-
-First you have to install the `arm-none-eabi-gcc` toolchain.
-On Ubuntu :
-
-      sudo apt-get install binutils-arm-none-eabi gcc-arm-none-eabi gdb-arm-none-eabi  libnewlib-arm-none-eabi libnewlib-arm-none-eabi
-
-### LLVM-5.0
-
-Also we want to install llvm-5.0:
-
-      wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
-      sudo add-apt-repository -y 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main'
-      sudo add-apt-repository -y 'deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main'
-
-      sudo apt-get update
-      sudo apt-get -y install clang-5.0 llvm-5.0 lld-5.0
-
-### Python3 / Meson / Ninja
-
-And of course meson-build
-
-      sudo apt-get -y install python3 python3-pip python3-setuptools ninja-build
-      sudo pip3 install --upgrade pip
-      sudo pip3 install meson
-
-### git
-
-      sudo apt-get -y install git
-
-### openocd
-
-      sudo apt-get install openocd
-
-You maybe have to add the so called udev rules.
-(They should get installed with the openocd package).
-After updateing the udev rules use this command to reload the new configs
-
-      sudo udevadm control --reload-rules
-
+take a look here : [Toochain.md](https://github.com/hwengineer/STM32F3Discovery-meson-example/blob/master/Toolchain.md)
 
 ### clone this repo
 
