@@ -29,8 +29,8 @@ foreach linkfile : linkfiles
 endforeach
 
 #==============================================================================#
-
 # add cpu specific compiler args (without hard fpu support  options)
+
 if host_machine.cpu() == 'cortex-m0'
     add_global_arguments('-mcpu=cortex-m0',      language : 'c')
 elif host_machine.cpu() == 'cortex-m0+'
@@ -45,24 +45,10 @@ elif host_machine.cpu() == 'cortex-m7'
     add_global_arguments('-mcpu=cortex-m7',      language : 'c')
 endif
 
-if meson.get_compiler('c').get_id() == 'clang'
-  if host_machine.cpu() == 'cortex-m0'
-      add_global_arguments('--target=thumbv6m-none-eabi',language : 'c')
-  elif host_machine.cpu() == 'cortex-m0+'
-      add_global_arguments('--target=thumbv6m-none-eabi',language : 'c')
-  elif host_machine.cpu() == 'cortex-m1'
-      add_global_arguments('--target=thumbv6m-none-eabi',language : 'c')
-  elif host_machine.cpu() == 'cortex-m3'
-      add_global_arguments('--target=thumbv7m-none-eabi',language : 'c')
-  elif host_machine.cpu() == 'cortex-m4'
-      add_global_arguments('--target=thumbv7em-none-eabi',language : 'c')
-      #add_global_arguments('--target=thumbv7em-none-eabihf',language : 'c') # hardfloat
-  else
-    error('host_machine.cpu no suitable option found')
-  endif
-else
-  add_global_arguments('-mthumb',            language : 'c')
-endif
+# define target
+add_global_arguments('--target=arm-none-eabi',language : 'c')
+# define language
+add_global_arguments('-mthumb',language : 'c')
 
 #==============================================================================#
 # optimizer Level
