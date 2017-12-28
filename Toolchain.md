@@ -41,10 +41,10 @@ After updateing the udev rules use this command to reload the new configs
 ### newer version
 Maybe you need a newer version of openocd.
 
-You have to go to the openocs website [http://openocd.org/](http://openocd.org/)
+You have to go to the openocd website [http://openocd.org/](http://openocd.org/)
 and download the current version.
 
-As an example I take version 0.10
+As an example I took version 0.10
 
     cd ~
     wget https://sourceforge.net/projects/openocd/files/openocd/0.10.0/openocd-0.10.0.zip/download
