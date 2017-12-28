@@ -2,9 +2,9 @@
 
 This is another STM32F3Discovery example Project.
 
-It uses the STM32Cube-f3-meson repo which is optimised for the `meson build system`.
+It uses the STM32Cube-F3-meson repo which is optimised for the `meson build system`.
 
-[STM32Cube-f3-meson](https://github.com/hwengineer/STM32Cube-f3-meson)
+[STM32Cube-f3-meson](https://github.com/hwengineer/STM32Cube-F3-meson)
 
 
 
