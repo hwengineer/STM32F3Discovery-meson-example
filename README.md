@@ -62,6 +62,8 @@ go to your destination folder and clone the repo in
 
 And no use the commands above for compilation and testing.
 
+## Errata
+-   blink frequency is way below what is to be expected. Maybe a configuration problem
 
 ## License
 Of course the STM32Cube Library is under its own license, all other stuff under my chosen MIT License

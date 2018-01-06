@@ -9,9 +9,23 @@ objdump = 'llvm-objdump-5.0'
 objcopy = 'arm-none-eabi-objcopy'
 strip   = 'arm-none-eabi-strip'
 gdb     = 'arm-none-eabi-gdb'
+terminal= 'x-terminal-emulator'
+openocd = '/usr/local/bin/openocd'
 
 [properties]
 c_args      = [
+               '--target=arm-none-eabi',    # define target for clang
+               '-mthumb',                   # define language
+               #------------------------------------
+               '-fshort-enums',             # otherwise errors at linking...
+               '-fmessage-length=0',        # all error warnings in a single line (default 72)
+               '-fsigned-char',             # char is per default unsigned
+               '-ffunction-sections',       # each function to a seperate section ==> Code-optimization / deletion
+               '-fdata-sections',           # each variable to a seperate section ==> Code-optimization / deletion
+
+               '-Weverything',
+               '-ffreestanding',
+
                #------------------------------------
                '-Wno-reserved-id-macro',
                '-Wno-unused-macros',
@@ -31,34 +45,20 @@ c_args      = [
                '-Wno-missing-variable-declarations',
                #------------------------------------
 
-               '-fshort-enums',             # otherwise errors at linking...
-               '-fmessage-length=0',        # all error warnings in a single line (default 72)
-               '-fsigned-char',             # char is per default unsigned
-               '-ffunction-sections',       # each function to a seperate section ==> Code-optimization / deletion
-               '-fdata-sections',           # each variable to a seperate section ==> Code-optimization / deletion
-
-               '-Weverything',
-               '-ffreestanding',
+               # '-emit-llvm', # creates segfault : need further inspection
+               '-v', # option for more verbose output
                ]
 
 c_link_args = [
-               # '-rtlib=compiler-rt',
-               # '-rtlib=libgcc',
                '--target=arm-none-eabi', # define target for linker
-               '-Wl,-Map,output.map',    # create linker map file
-               '-Wl,--as-needed',        # linker optimasation
-               '-Wl,--gc-sections',      # needed for optimization
-               '-flto',
+               '-v',                     # option for more verbose output
+                '-nostdlib',             # do not import the standard library's
 
-
-
-
-               '-nostdlib',
+               # '-Wl,-Map,output.map',    # create linker map file
+               # '-Wl,--as-needed',        # linker optimisation
+               # '-Wl,--gc-sections',      # needed for optimization
+               #'-flto',
               ]
-
-# doesnt work at the moment
-# newlib_nano = true
-newlib_nano = false
 
 [host_machine]
 system     = 'none'
