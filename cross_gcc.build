@@ -1,0 +1,42 @@
+[binaries]
+c       = 'arm-none-eabi-gcc'
+cpp     = 'arm-none-eabi-g++'
+ld      = 'arm-none-eabi-ld'
+ar      = 'arm-none-eabi-ar'
+as      = 'arm-none-eabi-as'
+size    = 'arm-none-eabi-size'
+objdump = 'arm-none-eabi-objdump'
+objcopy = 'arm-none-eabi-objcopy'
+strip   = 'arm-none-eabi-strip'
+gdb     = 'arm-none-eabi-gdb'
+terminal= 'x-terminal-emulator'
+openocd = '/usr/local/bin/openocd'
+
+exe_wrapper = 'meson_exe_wrapper.sh'
+
+[properties]
+c_args      = [
+               '-mthumb',                   # define language
+               #------------------------------------
+               '-fshort-enums',             # otherwise errors at linking...
+               '-fmessage-length=0',        # all error warnings in a single line (default 72)
+               '-fsigned-char',             # char is per default unsigned
+               '-ffunction-sections',       # each function to a seperate section ==> Code-optimization / deletion
+               '-fdata-sections',           # each variable to a seperate section ==> Code-optimization / deletion
+
+              '-Wall',
+               '-ffreestanding',
+               #------------------------------------
+               # '-flto',
+               ]
+
+c_link_args = [
+                '-nostdlib',             # do not import the standard library's
+               # '-flto',
+              ]
+
+[host_machine]
+system     = 'none'
+cpu_family = 'arm'
+cpu        = 'cortex-m4'
+endian     = 'little'
