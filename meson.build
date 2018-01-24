@@ -56,8 +56,9 @@ subdir('STM32Cube-F3-meson')
 
 #==============================================================================#
 main = executable(
-            'main.elf',
+            'main',
             [srcs, stm32cube_srcs, 'main.c', startupfile] ,
+            name_suffix         : 'elf',
             c_args              : [c_args ],
             link_args           : [link_args, '-Wl,--gc-sections'],
             dependencies        : link_deps,
@@ -77,6 +78,7 @@ openocd  = '@0@'.format(find_program('openocd', required:false).path())
 mainbin = custom_target(
                         'main.bin',
     output           : ['main.bin'],
+    # name_suffix      : 'bin',
     build_by_default : true,
     command          : [objcopy, '-O', 'binary', 'main.elf', 'main.bin'],
     depends          : [main])
@@ -96,12 +98,25 @@ mainsize = custom_target(
         command          : [size, '--format=berkeley', 'main.elf'],
         depends          : [main])
 
-maindump = custom_target(
+if meson.get_compiler('c').get_id() == 'clang'
+    maindump = custom_target(
+                          'dump',
+        capture          : true,
+        output           : 'main.dump',
+        build_by_default : false,
+        command          : [objdump, '-triple=@0@-none-eabi'.format(arch), '-disassemble-all', '-S', '-t', 'main.elf'],
+        depends          : [main])
+
+elif meson.get_compiler('c').get_id() == 'gcc'
+  maindump = custom_target(
                         'dump',
       capture          : true,
-      output           : ['main.dump'],
-      command          : [objdump, '-triple=thumbv6m-none-eabi', '-disassemble-all', '-S', '-t', 'main.elf', '>', 'main.dump'],
+      output           : 'main.dump',
+      build_by_default : false,
+      command          : [objdump, '-D', '-S', '-t', 'main.elf'],
       depends          : [main])
+endif
+
 
 #==============================================================================#
 # support target commands
